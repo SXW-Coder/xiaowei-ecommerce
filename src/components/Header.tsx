@@ -1,6 +1,7 @@
 import Link from "next/link"
 import { Separator } from "@/components/ui/separator"
 import { MenuList, Title } from "@/lib/constants"
+import { Fragment } from "react"
 
 export default async function Header(){
     return(
@@ -10,10 +11,11 @@ export default async function Header(){
                     <Link href="/">{Title}</Link>
                 </h1>
                 <div className="flex justify-end space-x-4 text-sm h-full">
-                    {MenuList.map((item,i)=><>
+                    {MenuList.map((item, i) =>
+                        (<Fragment key={item.text}>
                         { i!==0 && <Separator orientation="vertical" />}
-                        <Link key={item.text} href={item.href}>{item.text}</Link>
-                    </>)}
+                        <Link href={item.href}>{item.text}</Link>
+                    </Fragment>))}
                 </div>
             </div>           
         </div>
