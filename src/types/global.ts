@@ -2,6 +2,7 @@
 export type SortValue = 'latest' | 'low' | 'high'
 
 export type Product = {
+  [x: string]: any
   id: number
   name: string
   price: number

@@ -1,0 +1,10 @@
+{
+    "title": "My Website",
+    "menu": {
+        "home": "Home",
+        "about": "About",
+        "contact": "Contact"
+    },
+    "cart": "Cart",
+    "checkout": "Checkout"
+}

@@ -1,15 +1,11 @@
 import type { NextConfig } from "next";
 
-const nextConfig: NextConfig = {
-  /* config options here */
+const nextConfig = {
   images: {
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'duyi-resource.oss-cn-beijing.aliyuncs.com'
-      }
-    ]
-  }
+    domains: ['myapp-profile-pictures.s3.ap-northeast-1.amazonaws.com'],
+  },
 };
+
+module.exports = nextConfig;
 
 export default nextConfig;

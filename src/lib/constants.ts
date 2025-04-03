@@ -1,8 +1,8 @@
-export const Title = 'Store'
+export const Title = 'MyStore'
 export const MenuList = [
-    {href: '/search',text:'Search'},
-    {href: '/account',text:'Account'},
-    {href: '/cart',text:'Cart'},
+    {href: '/search',text:'検索'},
+    {href: '/account',text:'アカウント'},
+    {href: '/cart',text:'カート'},
 ]
 
 export const NavList = [
@@ -11,10 +11,10 @@ export const NavList = [
     {title:'Code',list:['GitHub','Documentation','Source code']}
 ]
 
-export const SortTitle = 'Sort by'
+export const SortTitle = '並べ替え'
 export const SortList = [
-    {value:'latest',text:'Latest Arrivals'},
-    {value:'low',text:'Price:Low -&gt High'},
-    {value:'high',text:'Price:High -&gt Low'}
+    {value:'latest',text:'最新入荷'},
+    {value:'low',text:'価格:安い順から高い順'},
+    {value:'high',text:'価格:高い順から安い順'}
 ]
-export const ProductsTitle = 'All products'
+export const ProductsTitle = 'すべての製品'
