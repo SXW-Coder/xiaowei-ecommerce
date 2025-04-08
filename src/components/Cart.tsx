@@ -20,7 +20,8 @@ import Image from 'next/image'
 import { useCartStore } from "@/store"
 import { Button } from "./ui/button"
 import { useRouter } from 'next/navigation'
-
+import font from "@/font.json"
+const i = 'content'; 
 export default function Cart({ status }: { status: number }) {
     const { cartList, updateQuantity, removeFromCart } = useCartStore()
     const quantityOptions = Array.from({ length: 10 }, (_, i) => i + 1)
@@ -37,14 +38,14 @@ export default function Cart({ status }: { status: number }) {
             {cartList.length ? (
                 <div className="py-24 px-2 flex">
                     <div className="flex-1 mr-14">
-                        <h2 className="text-2xl font-bold mb-6">Your Cart</h2>
+                        <h2 className="text-2xl font-bold mb-6">{font[i].cart}</h2>
                         <Table>
                             <TableHeader>
                                 <TableRow>
-                                    <TableHead className="w-[400px]">Product</TableHead>
-                                    <TableHead>Quantity</TableHead>
-                                    <TableHead>Price</TableHead>
-                                    <TableHead className="text-right">Total</TableHead>
+                                    <TableHead className="w-[400px]">{font[i].product}</TableHead>
+                                    <TableHead>{font[i].quantity}</TableHead>
+                                    <TableHead>{font[i].price}</TableHead>
+                                    <TableHead className="text-right">{font[i].total}</TableHead>
                                 </TableRow>
                             </TableHeader>
                             <TableBody>
@@ -76,8 +77,8 @@ export default function Cart({ status }: { status: number }) {
                                                 </Select>
                                             </div>
                                         </TableCell>
-                                        <TableCell>${cartItem.product.price}</TableCell>
-                                        <TableCell className="text-right">${cartItem.product.price * cartItem.quantity}</TableCell>
+                                        <TableCell>¥{cartItem.product.price}</TableCell>
+                                        <TableCell className="text-right">¥{cartItem.product.price * cartItem.quantity}</TableCell>
                                     </TableRow>
                                 ))}
                             </TableBody>
@@ -85,16 +86,16 @@ export default function Cart({ status }: { status: number }) {
                     </div>
                     <div className="w-56">
                         <h2 className="font-sans font-medium flex flex-row text-2xl mb-6">
-                            Total
+                            {font[i].total}
                         </h2>
-                        <p className="text-2xl font-bold text-red-400 mb-6">${cartList.reduce((acc, cartItem) => acc + cartItem.product.price * cartItem.quantity, 0).toFixed(2)}</p>
+                        <p className="text-2xl font-bold text-red-400 mb-6">¥{cartList.reduce((acc, cartItem) => acc + cartItem.product.price * cartItem.quantity, 0).toFixed(2)}</p>
                         {status === 200 ? (
-                            <Button className="w-full" onClick={() => router.push('/checkout')}>Proceed to Checkout</Button>
+                            <Button className="w-full" onClick={() => router.push('/checkout')}>{font[i].checkout}</Button>
                         ) : (
                             <>
-                                <Button className="w-full" onClick={() => router.push('/account')}>Login</Button>
+                                <Button className="w-full" onClick={() => router.push('/account')}>{font[i].login}</Button>
                                 <p className="text-sm text-slate-500 text-center mt-1">
-                                    You need to log in to proceed to checkout
+                                {font[i].verify}
                                 </p>
                             </>
                         )}
@@ -102,10 +103,10 @@ export default function Cart({ status }: { status: number }) {
                 </div>
             ) : (
                 <div className="py-48 px-2">
-                    <h2 className="text-2xl font-bold">Your Cart</h2>
-                    <p className="text-sm w-[400px] mb-6 mt-4">Your cart is empty. Let's start shopping!</p>
+                    <h2 className="text-2xl font-bold">{font[i].yourcart}</h2>
+                    <p className="text-sm w-[400px] mb-6 mt-4">{font[i].cartconfirm}</p>
                     <div className="flex text-sm items-center underline text-orange-400">
-                        <Button onClick={() => router.push("/")}>Start Shopping</Button>
+                        <Button onClick={() => router.push("/")}>{font[i].shoppingconfirm}</Button>
                         <ArrowUpRight width={18} />
                     </div>
                 </div>

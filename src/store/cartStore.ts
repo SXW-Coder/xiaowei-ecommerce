@@ -4,16 +4,19 @@ import { CartItem } from "@/types/global";
 
 type CartState = {
   cartList: CartItem[];
+  clearCart: () => void;
   addToCart: (product: CartItem) => void;
   removeFromCart: (index: number) => void;
   isItemInCart: (name: string, selectedVariant: string) => number;
   updateQuantity: (index: number, quantity: number) => void;
 };
 
+
 const useCartStore = create<CartState>()(
   persist(
     (set) => ({
       cartList: [],
+      clearCart: () => set({ cartList: [] }),
       addToCart: (product) =>
         set((state) => ({ cartList: [...state.cartList, product] })),
       removeFromCart: (index) =>

@@ -13,10 +13,10 @@ import {
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { loginAction } from "@/actions/users";
-import { useSonner } from "sonner"
 import { toast } from "sonner"
 import { useForm } from "react-hook-form";
-import { describe } from "node:test";
+import font from "@/font.json"
+const i = 'content'; 
 
 const formSchema = z.object({
     email: z.string().email({ message: '有効なメールアドレスを入力してください。' }),
@@ -47,8 +47,8 @@ export default function Login({ setNotAccountType }: { setNotAccountType: Dispat
     }
     return (
         <div className="container2  my-20">
-            <h1 className="text-xl mb-3 text-center font-bold">Welcome back</h1>
-            <p className="text-center mb-6">Sign in to access an enhanced shopping experience.</p>
+            <h1 className="text-xl mb-3 text-center font-bold">{font[i].title}</h1>
+            <p className="text-center mb-6">{font[i].describe}</p>
             <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
                     <FormField
@@ -56,9 +56,9 @@ export default function Login({ setNotAccountType }: { setNotAccountType: Dispat
                         name="email"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Email</FormLabel>
+                                <FormLabel>{font[i].email}</FormLabel>
                                 <FormControl>
-                                    <Input placeholder="Please enter your email" {...field} />
+                                    <Input placeholder={font[i].confirmemail} {...field} />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
@@ -69,18 +69,18 @@ export default function Login({ setNotAccountType }: { setNotAccountType: Dispat
                         name="password"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Password</FormLabel>
+                                <FormLabel>{font[i].password}</FormLabel>
                                 <FormControl>
-                                    <Input type="password" placeholder="Please enter your password" {...field} />
+                                    <Input type="password" placeholder={font[i].confirmpassword} {...field} />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
                         )}
                     />
-                    <Button className="w-full" type="submit">Sign in</Button>
+                    <Button className="w-full" type="submit">{font[i].sign}</Button>
                 </form>
             </Form>
-            <p className="text-center text-sm mt-3">Not a member? <span className="underline text-orange-400 cursor-pointer" onClick={() => setNotAccountType('register')}>Join us.</span></p>
+            <p className="text-center text-sm mt-3">{font[i].notmember} <span className="underline text-orange-400 cursor-pointer" onClick={() => setNotAccountType('register')}>{font[i].join}</span></p>
         </div>
     )
 }

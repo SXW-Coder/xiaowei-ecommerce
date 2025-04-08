@@ -3,8 +3,9 @@
 import { Product } from '@/types/global'
 import { useRouter } from 'next/navigation'
 import { useState, useEffect } from 'react'
-
-export default function SearchPage({ data }: { data: Product[] }) {
+import font from "@/font.json"
+const i = 'content'; 
+export default function SearchPage() {
     const router = useRouter(); 
     const [searchTerm, setSearchTerm] = useState('');
     const [results, setResults] = useState<Product[]>([]); 
@@ -32,7 +33,7 @@ export default function SearchPage({ data }: { data: Product[] }) {
         <div className="p-4">
             <input
                 type="text"
-                placeholder="Search products..."
+                placeholder={font[i].search}
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="border p-2 w-full"
@@ -45,7 +46,7 @@ export default function SearchPage({ data }: { data: Product[] }) {
                         </li>
                     ))
                 ) : (
-                    <li className="text-gray-500">No results</li>
+                    <li className="text-gray-500">{font[i].Noresults}</li>
                 )}
             </ul>
         </div>

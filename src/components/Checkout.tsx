@@ -24,6 +24,10 @@ import { Button } from './ui/button'
 import Image from 'next/image'
 import { useCartStore } from '@/store'
 import { useState } from 'react'
+import font from "@/font.json"
+const i = 'content'; 
+import { useRouter } from 'next/navigation';
+
 
 export default function Checkout({
   addressesData,
@@ -31,16 +35,26 @@ export default function Checkout({
   addressesData: Address[]
 }) {
   const { cartList } = useCartStore()
+  const { clearCart  } = useCartStore()
   const [selectAddress, setSelectAddress] = useState('')
+  const router = useRouter();
+  const handleCreateOrder = async () => {
+    const prevOrders = JSON.parse(localStorage.getItem("orders") || "[]")
+  const newOrder = [...cartList]
+  localStorage.setItem("orders", JSON.stringify([...prevOrders, newOrder]))
+
+  clearCart()
+  router.push('/success')
+  };
   return (
     <>
       <div className="border-b py-4">
-        <h2 className="text-lg leading-10 font-bold">Address</h2>
+        <h2 className="text-lg leading-10 font-bold">{font[i].addresses}</h2>
         {addressesData.length === 0 ? (
           <div className="my-2">
-            <p>Don&#39;t have a shipping address yet?</p>
+            <p>{font[i].confirmaddress}</p>
             <div className="flex text-sm items-center underline text-orange-400">
-              <Link href="/account">Add address</Link>
+              <Link href="/account">{font[i].newaddresses}</Link>
               <ArrowUpRight width={18} />
             </div>
           </div>
@@ -48,17 +62,17 @@ export default function Checkout({
           <div>
             <Select onValueChange={setSelectAddress}>
               <SelectTrigger className="w-full">
-                <SelectValue placeholder="Select a address" />
+                <SelectValue placeholder={font[i].selectaddress} />
               </SelectTrigger>
               <SelectContent>
                 <SelectGroup>
-                  <SelectLabel>Address</SelectLabel>
+                  <SelectLabel>{font[i].addresses}</SelectLabel>
                   {addressesData.map((item) => (
                     <SelectItem key={item.id} value={item.id.toString()}>
                       <h3 className="font-bold m-2">{item.name}</h3>
-                      <p className="mx-5">city: {item.city}</p>
-                      <p className="mx-5">address: {item.address}</p>
-                      <p className="mx-5">phone: {item.phone}</p>
+                      <p className="mx-5">{font[i].city}:{item.city}</p>
+                      <p className="mx-5">{font[i].address}:{item.address}</p>
+                      <p className="mx-5">{font[i].phone}: {item.phone}</p>
                     </SelectItem>
                   ))}
                 </SelectGroup>
@@ -68,15 +82,14 @@ export default function Checkout({
         )}
       </div>
       <div className="border-b py-4">
-        <h2 className="text-lg leading-10 font-bold">Cart</h2>
+        <h2 className="text-lg leading-10 font-bold">{font[i].cart}</h2>
         {cartList.length === 0 ? (
           <div className="my-2">
             <p>
-              You don&#39;t have anything in your cart. Let&#39;s change that,
-              use the link below to start browsing our products.
+              {font[i].nocart}
             </p>
             <div className="flex text-sm items-center underline text-orange-400">
-              <Link href="/">Start Shopping</Link>
+              <Link href="/">{font[i].shopping}</Link>
               <ArrowUpRight width={18} />
             </div>
           </div>
@@ -85,10 +98,10 @@ export default function Checkout({
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead className="w-[400px]">Item</TableHead>
-                  <TableHead>Quantity</TableHead>
-                  <TableHead>Price</TableHead>
-                  <TableHead className="text-right">Total</TableHead>
+                  <TableHead className="w-[400px]">{font[i].item}</TableHead>
+                  <TableHead>{font[i].quantity}</TableHead>
+                  <TableHead>{font[i].price}</TableHead>
+                  <TableHead className="text-right">{font[i].total}</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -119,18 +132,18 @@ export default function Checkout({
                       </div>
                     </TableCell>
                     <TableCell>{cartItem.quantity}</TableCell>
-                    <TableCell>${cartItem.product.price}</TableCell>
+                    <TableCell>¥{cartItem.product.price}</TableCell>
                     <TableCell className="text-right">
-                      ${cartItem.product.price * cartItem.quantity}
+                      ¥{cartItem.product.price * cartItem.quantity}
                     </TableCell>
                   </TableRow>
                 ))}
               </TableBody>
               <TableFooter>
                 <TableRow>
-                  <TableCell colSpan={3}>Total</TableCell>
+                  <TableCell colSpan={3}>{font[i].total}</TableCell>
                   <TableCell className="text-right">
-                    $
+                    ¥
                     {cartList
                       .reduce(
                         (acc, cartItem) =>
@@ -146,12 +159,8 @@ export default function Checkout({
         )}
 
       </div>
-      <div className="border-b py-4">
-        <h2 className="text-lg leading-10 font-bold">Payment</h2>
-        <p>In the process of functional construction ...</p>
-      </div>
       <div className="mt-4">
-        <Button disabled={!selectAddress || !cartList.length}>Cresate order</Button>
+        <Button onClick={handleCreateOrder} disabled={!selectAddress || !cartList.length}>{font[i].createorder}</Button>
       </div>
     </>
   )

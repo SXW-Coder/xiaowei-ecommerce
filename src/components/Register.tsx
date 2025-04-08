@@ -16,6 +16,8 @@ import { registerAction } from "@/actions/users";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner"; 
 import { useRouter } from "next/navigation";
+import font from "@/font.json"
+const i = 'content'; 
 
 const formSchema = z.object({
     email: z.string().email({ message: 'Please enter a valid email.' }),
@@ -53,8 +55,8 @@ export default function Register({ setNotAccountType }: { setNotAccountType: Dis
     }
     return (
         <div className="container2  my-20">
-            <h1 className="text-xl mb-3 text-center font-bold">Become a member</h1>
-            <p className="text-center mb-6">Create your store member profile.</p>
+            <h1 className="text-xl mb-3 text-center font-bold">{font[i].member}</h1>
+            <p className="text-center mb-6">{font[i].memberdescribe}</p>
             <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
                     <FormField
@@ -62,9 +64,9 @@ export default function Register({ setNotAccountType }: { setNotAccountType: Dis
                         name="email"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Email</FormLabel>
+                                <FormLabel>{font[i].email}</FormLabel>
                                 <FormControl>
-                                    <Input placeholder="Please enter your email" {...field} />
+                                    <Input placeholder={font[i].confirmemail} {...field} />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
@@ -75,9 +77,9 @@ export default function Register({ setNotAccountType }: { setNotAccountType: Dis
                         name="name"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Name</FormLabel>
+                                <FormLabel>{font[i].nickname}</FormLabel>
                                 <FormControl>
-                                    <Input type="password" placeholder="Please enter your Name" {...field} />
+                                    <Input type="password" placeholder={font[i].confirmnickname} {...field} />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
@@ -88,18 +90,18 @@ export default function Register({ setNotAccountType }: { setNotAccountType: Dis
                         name="password"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Password</FormLabel>
+                                <FormLabel>{font[i].password}</FormLabel>
                                 <FormControl>
-                                    <Input type="password" placeholder="Please enter your password" {...field} />
+                                    <Input type="password" placeholder={font[i].confirmpassword}  {...field} />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
                         )}
                     />
-                    <Button className="w-full" type="submit">Join</Button>
+                    <Button className="w-full" type="submit">{font[i].join} </Button>
                 </form>
             </Form>
-            <p className="text-center text-sm mt-3">Aready a member? <span className="underline text-orange-400 cursor-pointer" onClick={() => setNotAccountType('login')}>Sign in.</span></p>
+            <p className="text-center text-sm mt-3">{font[i].confirmmember} <span className="underline text-orange-400 cursor-pointer" onClick={() => setNotAccountType('login')}>{font[i].sign}</span></p>
         </div>
     )
 }

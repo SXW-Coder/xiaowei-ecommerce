@@ -33,6 +33,8 @@ const formSchema = z.object({
     address: z.string().min(1, { message: 'Address cannot be empty' }),
     phone: z.string().min(1, { message: 'Phone cannot be empty' }),
 })
+import font from "@/font.json"
+const i = 'content'; 
 
 export default function Address({ authData, addressesData }: { authData: JwtPayload; addressesData: AddressType[]}) {
     const [open, setOpen] = useState(false)
@@ -82,7 +84,7 @@ export default function Address({ authData, addressesData }: { authData: JwtPayl
             <AlertDialog open={open} onOpenChange={setOpen}>
                 <AlertDialogTrigger asChild>
                     <div className="border rounded-sm h-40 cursor-pointer relative text-slate-600" onClick={handleNewAddress}>
-                        <p className="m-3">New address</p>
+                        <p className="m-3">{ font[i].newaddresses}</p>
                         <div className="absolute bottom-2 left-3">
                             <Plus width={14} />
                         </div>
@@ -90,7 +92,7 @@ export default function Address({ authData, addressesData }: { authData: JwtPayl
                 </AlertDialogTrigger>
                 <AlertDialogContent>
                     <AlertDialogHeader>
-                        <AlertDialogTitle className="mb-5">Add address</AlertDialogTitle>
+                        <AlertDialogTitle className="mb-5">{ font[i].newaddresses}</AlertDialogTitle>
                         <AlertDialogDescription></AlertDialogDescription>
                         <Form {...form}>
                             <form
@@ -103,7 +105,7 @@ export default function Address({ authData, addressesData }: { authData: JwtPayl
                                     render={({ field }) => (
                                         <FormItem>
                                             <div className="flex items-center space-x-2">
-                                                <FormLabel className="w-20">Name</FormLabel>
+                                                <FormLabel className="w-20">{ font[i].nickname}</FormLabel>
                                                 <FormControl>
                                                     <Input
                                                         placeholder="Please enter your name"
@@ -121,7 +123,7 @@ export default function Address({ authData, addressesData }: { authData: JwtPayl
                                     render={({ field }) => (
                                         <FormItem>
                                             <div className="flex items-center space-x-2">
-                                                <FormLabel className="w-20">City</FormLabel>
+                                                <FormLabel className="w-20">{ font[i].city}</FormLabel>
                                                 <FormControl>
                                                     <Input
                                                         placeholder="Please enter your city"
@@ -139,10 +141,10 @@ export default function Address({ authData, addressesData }: { authData: JwtPayl
                                     render={({ field }) => (
                                         <FormItem>
                                             <div className="flex items-center space-x-2">
-                                                <FormLabel className="w-20">Address</FormLabel>
+                                                <FormLabel className="w-20">{ font[i].address}</FormLabel>
                                                 <FormControl>
                                                     <Input
-                                                        placeholder="Please enter your address"
+                                                        placeholder={ font[i].confirmaddress}
                                                         {...field}
                                                     />
                                                 </FormControl>
@@ -157,7 +159,7 @@ export default function Address({ authData, addressesData }: { authData: JwtPayl
                                     render={({ field }) => (
                                         <FormItem>
                                             <div className="flex items-center space-x-2">
-                                                <FormLabel className="w-20">Phone</FormLabel>
+                                                <FormLabel className="w-20">{ font[i].phone}</FormLabel>
                                                 <FormControl>
                                                     <Input
                                                         placeholder="Please enter your phone"
@@ -187,8 +189,8 @@ export default function Address({ authData, addressesData }: { authData: JwtPayl
                         <p>{item.phone}</p>
                     </div>
                     <div className="absolute bottom-2 left-3 flex text-xs gap-2">
-                        <div className="flex items-center cursor-pointer" onClick={() => handleEdit(item)}><Edit width={14} /> Edit</div>
-                        <div className="flex items-center cursor-pointer" onClick={() => handleDelete(item.id)}><Trash2 width={14} /> Remove</div>
+                         <div className="flex items-center cursor-pointer" onClick={() => handleEdit(item)}><Edit width={14} /> { font[i].edit}</div>
+                        <div className="flex items-center cursor-pointer" onClick={() => handleDelete(item.id)}><Trash2 width={14} />  { font[i].remove}</div>
                     </div>
                 </div>
             ))}

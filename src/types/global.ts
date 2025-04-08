@@ -2,7 +2,7 @@
 export type SortValue = 'latest' | 'low' | 'high'
 
 export type Product = {
-  [x: string]: any
+  [x: string]: string | number | string[];
   id: number
   name: string
   price: number
@@ -39,3 +39,4 @@ export type Address = {
   phone: string
   userid: number
 }
+export type Order  = CartItem[]
