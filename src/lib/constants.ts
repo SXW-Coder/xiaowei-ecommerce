@@ -7,7 +7,7 @@ export const MenuList = [
 
 export const NavList = [
     {
-      title: 'Categories',
+      title: 'カテゴリー',
       list: [
         { label: 'アパレル', path: 'apparel' },
         { label: 'シューズ', path: 'shoes' },
@@ -17,12 +17,19 @@ export const NavList = [
       ]
     },
     {
-      title: 'Code',
+      title: 'コード',
       list: [
-        { label: 'GitHub', path: 'https://github.com/YuukiHaven/my-ecommerce' },
-        { label: 'Documentation', path: 'https://github.com/SXW-Coder/xiaowei-ecommerce/blob/main/README.md' }
+        { label: 'GitHub', path: 'https://github.com/SXW-Coder/xiaowei-ecommerce' },
+        { label: 'ドキュメント', path: 'https://github.com/SXW-Coder/xiaowei-ecommerce/blob/main/README.md' }
       ]
-    }
+    },
+    {
+        title: '© 2025 xiaoweishop',
+        list: [
+          { label: 'プライバシーポリシー', path: 'https://github.com/SXW-Coder/xiaowei-ecommerce/blob/main/policy.md' },
+          { label: '利用規約', path: 'https://github.com/SXW-Coder/xiaowei-ecommerce/blob/main/terms.md' }
+        ]
+      }
   ]
 
 export const SortTitle = '並べ替え'
