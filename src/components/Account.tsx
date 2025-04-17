@@ -28,15 +28,20 @@ export default function Account({ authData, addressesData }: { authData: JwtPayl
     const storedOrders = localStorage.getItem("orders")
     console.log('Stored Orders:', storedOrders) 
 
-    if (storedOrders) { 
-    try {
+    if (storedOrders) {
+      try {
         const parsedOrders = JSON.parse(storedOrders);
         if (Array.isArray(parsedOrders) && parsedOrders.length > 0) {
-            setOrders(parsedOrders);
+          setOrders(parsedOrders);
+        } else {
+          console.error('Parsed orders are not an array or are empty:', parsedOrders);
         }
-    } catch (error) {
+      } catch (error) {
+        console.error('Error parsing orders:', error); 
+      }
+    } else {
+      console.log('No orders found in localStorage'); 
     }
-} 
   }, [])
 
 
