@@ -1,36 +1,88 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🛒 My E-commerce Frontend / フロントエンドECサイト
 
-## Getting Started
+## 📝 概要 / Overview
 
-First, run the development server:
+このプロジェクトは、Next.js と TypeScript を用いたフロントエンドのECサイトです。  
+This project is a frontend e-commerce site built using Next.js and TypeScript.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Zustand による状態管理、SSR/CSR の使い分け、そしてユーザー体験を意識した UI 設計を行っています。  
+It features state management with Zustand, hybrid rendering (SSR + CSR), and user-friendly UI components.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🚀 主な機能 / Features
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- ✅ 商品一覧ページ（カテゴリ別）  
+  Product listing by category (`apparel`, `shoes`, `backpack`, etc.)
 
-## Learn More
+- ✅ 商品詳細ページ  
+  Product detail page
 
-To learn more about Next.js, take a look at the following resources:
+- ✅ カート管理（Zustand 使用）  
+  Cart system powered by Zustand
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- ✅ チェックアウト & 配送先住所管理  
+  Checkout flow with address selection and form validation
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- ✅ 注文履歴の保存（localStorage）  
+  Order history saved to localStorage
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🧩 技術スタック / Tech Stack
+
+- **Next.js 14 (App Router)**
+- **TypeScript**
+- **Zustand** - 状態管理
+- **Tailwind CSS** - スタイリング
+- **Vercel** - デプロイ先
+- **PostgreSQL (サーバーからのフェッチは `db()` で抽象化)**
+
+---
+
+## 🖼️ ページ構成 / Page Structure
+
+| ページ | 説明 |
+|--------|------|
+| `/` | トップページ（商品一覧） |
+| `/apparel`, `/shoes`... | カテゴリ別商品ページ |
+| `/detail/:id` | 商品詳細ページ |
+| `/checkout` | チェックアウト（住所選択 & 注文確認） |
+| `/account` | アカウント管理（注文履歴・住所管理） |
+
+---
+
+## 🌐 デプロイ / Deployment
+
+- Vercel: [https://xiaowei-shop.vercel.app](https://xiaowei-shop.vercel.app)
+
+---
+
+## 📦 使用ライブラリ / Packages
+
+- `@radix-ui/react-dialog`, `@shadcn/ui`（UI コンポーネント）
+- `lucide-react`（アイコン）
+- `zod`, `react-hook-form`（フォームバリデーション）
+- `classnames`（クラス名動的制御）
+
+---
+
+## 👤 開発者 / Author
+
+**ソウ ギョウイ**  
+GitHub: [https://github.com/SXW-Coder](https://github.com/SXW-Coder)
+
+---
+
+## 📝 補足 / Notes
+
+現在、本プロジェクトはフロントエンドに特化しており、主に以下の機能が実装されています：
+・商品一覧ページ、カート機能、チェックアウトページ
+・商品のカテゴリ別表示
+・ストアとユーザーインターフェイスに関連する基本的なデザイン
+
+---
+
+> ご覧いただきありがとうございます！ポートフォリオ・面接資料としても使用しています。何かご質問やご意見があればお気軽にお知らせください。
+

@@ -28,22 +28,15 @@ export default function Account({ authData, addressesData }: { authData: JwtPayl
     const storedOrders = localStorage.getItem("orders")
     console.log('Stored Orders:', storedOrders) 
 
-    if (storedOrders) {
-      try {
-        const parsedOrders = JSON.parse(storedOrders)
-        console.log('Parsed Orders:', parsedOrders) 
-
+    if (storedOrders) { 
+    try {
+        const parsedOrders = JSON.parse(storedOrders);
         if (Array.isArray(parsedOrders) && parsedOrders.length > 0) {
-          setOrders(parsedOrders)
-        } else {
-          console.error('解析的订单不是数组或为空:', parsedOrders)
+            setOrders(parsedOrders);
         }
-      } catch (error) {
-        console.error('解析订单时出错:', error)
-      }
-    } else {
-      console.log('localStorage 中没有订单数据。')
+    } catch (error) {
     }
+} 
   }, [])
 
 

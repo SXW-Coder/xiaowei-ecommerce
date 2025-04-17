@@ -20,7 +20,7 @@ export const NavList = [
       title: 'Code',
       list: [
         { label: 'GitHub', path: 'https://github.com/YuukiHaven/my-ecommerce' },
-        { label: 'Documentation', path: 'https://your-docs.com' }
+        { label: 'Documentation', path: 'https://github.com/SXW-Coder/xiaowei-ecommerce/blob/main/README.md' }
       ]
     }
   ]
