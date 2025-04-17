@@ -9,7 +9,7 @@ import { useRouter } from "next/navigation"
 export default function Products({ data, category }: { data: Product[], category?: string })  {
     const { value } = useSortStore()
     const router = useRouter()
-    let products = category 
+    const  products = category 
     ? data.filter(product => product.category === category) 
     : [...data]
 
