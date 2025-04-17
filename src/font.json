@@ -21,8 +21,7 @@
       "confirmpassword": "パスワードを入力してください",
       "confirmnickname": "ニックネームを入力してください",
       "confirmmember": "すでに会員ですか?", 
-      "confirmaddress": "配送先がまだありませんか?",  
-      "enteraddress": "ご番地を入力してください?",  
+      "enteraddress": "番地を入力してください",  
       "sign": "サインイン",
       "join": "登録する",
       "member": "仲間になる",
@@ -32,6 +31,8 @@
       "addresses": "配送先",
       "addressesdescribe": "配送先を表示および更新します。配送先を保存すると、チェックアウト時に利用できるようになります。",
       "newaddresses": "配送先を追加",      
+      "inputrname": "お名前を入力してください",      
+      "inputcity": "市区町村を入力してください",      
       "edit": "編集",      
       "remove": "削除",      
       "orders": "注文",      
@@ -48,9 +49,12 @@
       "city": "市区町村",
       "address": "番地",
       "phone": "電話番号",
+      "inputphone": "電話番号を入力してください",
       "yourcart": "あなたのカート",
       "cartconfirm": "カートに商品が入っていません。お買い物を始めましょう！",
-      "shoppingconfirm": "ショッピングスタート！"
+      "shoppingconfirm": "ショッピングスタート！",
+      "cancel": "キャンセル",
+      "save": "保存"
 
       
       

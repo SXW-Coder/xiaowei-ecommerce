@@ -52,7 +52,7 @@ export default function Checkout({
         <h2 className="text-lg leading-10 font-bold">{font[i].addresses}</h2>
         {addressesData.length === 0 ? (
           <div className="my-2">
-            <p>{font[i].confirmaddress}</p>
+            <p>{font[i].enteraddress}</p>
             <div className="flex text-sm items-center underline text-orange-400">
               <Link href="/account">{font[i].newaddresses}</Link>
               <ArrowUpRight width={18} />

@@ -108,7 +108,7 @@ export default function Address({ authData, addressesData }: { authData: JwtPayl
                                                 <FormLabel className="w-20">{ font[i].nickname}</FormLabel>
                                                 <FormControl>
                                                     <Input
-                                                        placeholder="Please enter your name"
+                                                        placeholder={ font[i].inputrname}
                                                         {...field}
                                                     />
                                                 </FormControl>
@@ -126,7 +126,7 @@ export default function Address({ authData, addressesData }: { authData: JwtPayl
                                                 <FormLabel className="w-20">{ font[i].city}</FormLabel>
                                                 <FormControl>
                                                     <Input
-                                                        placeholder="Please enter your city"
+                                                        placeholder={ font[i].inputcity}
                                                         {...field}
                                                     />
                                                 </FormControl>
@@ -144,7 +144,7 @@ export default function Address({ authData, addressesData }: { authData: JwtPayl
                                                 <FormLabel className="w-20">{ font[i].address}</FormLabel>
                                                 <FormControl>
                                                     <Input
-                                                        placeholder={ font[i].confirmaddress}
+                                                        placeholder={ font[i].enteraddress}
                                                         {...field}
                                                     />
                                                 </FormControl>
@@ -162,7 +162,7 @@ export default function Address({ authData, addressesData }: { authData: JwtPayl
                                                 <FormLabel className="w-20">{ font[i].phone}</FormLabel>
                                                 <FormControl>
                                                     <Input
-                                                        placeholder="Please enter your phone"
+                                                        placeholder={ font[i].inputphone}
                                                         {...field}
                                                     />
                                                 </FormControl>
@@ -172,8 +172,8 @@ export default function Address({ authData, addressesData }: { authData: JwtPayl
                                     )}
                                 />
                                 <AlertDialogFooter>
-                                    <AlertDialogCancel>Cancel</AlertDialogCancel>
-                                    <Button type="submit">Save</Button>
+                                    <AlertDialogCancel>{ font[i].cancel}</AlertDialogCancel>
+                                    <Button type="submit">{ font[i].save}</Button>
                                 </AlertDialogFooter>
                             </form>
                         </Form>
