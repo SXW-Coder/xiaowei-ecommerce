@@ -53,7 +53,7 @@ export default function Cart({ status }: { status: number }) {
                                     <TableRow key={i}>
                                         <TableCell>
                                             <div className="flex items-center">
-                                                <Image src={cartItem.product.image} alt="" width={64} height={64} priority style={{ width: '64px', height: '64px', objectFit: 'cover' }} />
+                                                <Image src={cartItem.product.image} alt="" width={64} height={64} priority style={{objectFit: 'cover' }} />
                                                 <div className="ml-4 space-y-3">
                                                     <p className="text-sm font-medium">{cartItem.product.name}</p>
                                                     <p className="text-xs text-gray-400">{cartItem.selectedVariant}</p>
